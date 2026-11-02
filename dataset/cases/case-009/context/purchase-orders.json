@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-009",
+      "reference": "PO-2026-7109",
+      "status": "open",
+      "supplier_id": "SUP-003",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-009-01",
+          "sku": "DRILL-800",
+          "description": "Hammer drill SDS-plus 800 W",
+          "explicit_aliases": [],
+          "quantity": "5",
+          "unit": "pcs",
+          "unit_net_price": "186.40",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-009-02",
+          "sku": "BIT-SET5",
+          "description": "Masonry drill bit set 5 pcs",
+          "explicit_aliases": [],
+          "quantity": "10",
+          "unit": "pcs",
+          "unit_net_price": "24.50",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

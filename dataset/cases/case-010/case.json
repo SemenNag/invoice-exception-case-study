@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-010",
+  "policy_ref": "core-v1",
+  "as_of": "2026-11-02",
+  "input_documents": [
+    {
+      "document_id": "DOC-010",
+      "path": "documents/document-001.pdf",
+      "content_sha256": "3d88a4e1637ae4c0b2d7d0625f2c4a18dec5501f20a61b5d54811467e7763ed2"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "input": "steps/step-001.json",
+      "expected": "expected/step-001.json"
+    },
+    {
+      "step": 2,
+      "input": "steps/step-002.json",
+      "expected": "expected/step-002.json"
+    },
+    {
+      "step": 3,
+      "input": "steps/step-003.json",
+      "expected": "expected/step-003.json"
+    }
+  ]
+}

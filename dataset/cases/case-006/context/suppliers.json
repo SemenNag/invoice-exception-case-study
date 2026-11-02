@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "suppliers": [
+    {
+      "supplier_id": "SUP-003",
+      "legal_name": "Nordbau Supply GmbH",
+      "country": "DE",
+      "registration_id": "DE-SYN-60001",
+      "approved_bank_accounts": [
+        {
+          "iban": "AT00SYNTHETIC0000000003",
+          "bic": "SYNBAT00"
+        }
+      ]
+    },
+    {
+      "supplier_id": "SUP-006-B",
+      "legal_name": "Nordbau Supplies GmbH",
+      "country": "DE",
+      "registration_id": "DE-SYN-60002",
+      "approved_bank_accounts": [
+        {
+          "iban": "DE00SYNTHETIC0000000006",
+          "bic": "SYNBDE00"
+        }
+      ]
+    }
+  ]
+}

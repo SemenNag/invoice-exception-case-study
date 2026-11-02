@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-008",
+      "reference": "PO-2026-7108",
+      "status": "open",
+      "supplier_id": "SUP-002",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-008-01",
+          "sku": "MW-100",
+          "description": "Mineral wool insulation slab pack",
+          "explicit_aliases": [],
+          "quantity": "35",
+          "unit": "pcs",
+          "unit_net_price": "31.60",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-008-02",
+          "sku": "TAPE-60",
+          "description": "Vapour barrier tape 60 mm roll",
+          "explicit_aliases": [],
+          "quantity": "20",
+          "unit": "pcs",
+          "unit_net_price": "14.20",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-008-03",
+          "sku": "FIX-180",
+          "description": "Insulation fixing anchor 180 mm box",
+          "explicit_aliases": [],
+          "quantity": "10",
+          "unit": "pcs",
+          "unit_net_price": "22.40",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

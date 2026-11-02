@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/step-output.schema.json",
+  "title": "Adapter step output (expected/step-NNN.json, adapter stdout)",
+  "description": "Exit code 0 returns a result; exit code 2 returns a validation error.",
+  "oneOf": [{ "$ref": "#/$defs/result" }, { "$ref": "#/$defs/validation_error" }],
+  "$defs": {
+    "validation_error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["error"],
+      "properties": {
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "details"],
+          "properties": {
+            "code": { "const": "VALIDATION_ERROR" },
+            "details": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["path", "message"],
+                "properties": {
+                  "path": { "type": "string" },
+                  "message": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "case_id", "step", "policy_version", "context_version", "input_revision",
+        "document_id", "import_disposition", "original_document_id", "existing_assessment_ref",
+        "matched_order_id", "order_match_source", "lines", "totals", "checks", "decision", "questions"
+      ],
+      "properties": {
+        "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+        "case_id": { "$ref": "common.schema.json#/$defs/case_id" },
+        "step": { "type": "integer", "minimum": 1 },
+        "policy_version": { "$ref": "common.schema.json#/$defs/policy_ref" },
+        "context_version": { "$ref": "common.schema.json#/$defs/id" },
+        "input_revision": { "type": "integer", "minimum": 1 },
+        "document_id": { "$ref": "common.schema.json#/$defs/id" },
+        "import_disposition": { "$ref": "common.schema.json#/$defs/import_disposition" },
+        "original_document_id": { "oneOf": [{ "$ref": "common.schema.json#/$defs/id" }, { "type": "null" }] },
+        "existing_assessment_ref": { "type": ["string", "null"], "description": "Candidate-defined reference to an existing assessment of the original; not compared by the runner." },
+        "matched_order_id": { "oneOf": [{ "$ref": "common.schema.json#/$defs/id" }, { "type": "null" }] },
+        "order_match_source": { "oneOf": [{ "$ref": "common.schema.json#/$defs/match_source" }, { "type": "null" }] },
+        "lines": { "type": "array", "items": { "$ref": "#/$defs/line_result" } },
+        "totals": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["calculated_subtotal", "calculated_tax_total", "calculated_total"],
+              "properties": {
+                "calculated_subtotal": { "$ref": "common.schema.json#/$defs/decimal" },
+                "calculated_tax_total": { "$ref": "common.schema.json#/$defs/decimal" },
+                "calculated_total": { "$ref": "common.schema.json#/$defs/decimal" }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "checks": { "type": "array", "items": { "$ref": "#/$defs/check" } },
+        "decision": { "oneOf": [{ "$ref": "common.schema.json#/$defs/decision" }, { "type": "null" }] },
+        "questions": { "type": "array", "items": { "$ref": "#/$defs/question" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "import_disposition": { "const": "duplicate" } } },
+          "then": {
+            "properties": {
+              "original_document_id": { "$ref": "common.schema.json#/$defs/id" },
+              "matched_order_id": { "type": "null" },
+              "order_match_source": { "type": "null" },
+              "lines": { "maxItems": 0 },
+              "totals": { "type": "null" },
+              "checks": { "maxItems": 0 },
+              "decision": { "type": "null" },
+              "questions": { "maxItems": 0 }
+            }
+          },
+          "else": {
+            "properties": {
+              "decision": { "$ref": "common.schema.json#/$defs/decision" },
+              "totals": { "type": "object" },
+              "checks": { "minItems": 1 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "import_disposition": { "const": "conflict" } } },
+          "then": { "properties": { "original_document_id": { "$ref": "common.schema.json#/$defs/id" } } }
+        },
+        {
+          "if": { "properties": { "import_disposition": { "const": "new" } } },
+          "then": { "properties": { "original_document_id": { "type": "null" } } }
+        }
+      ]
+    },
+    "line_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document_line_id", "order_line_id", "match_source", "calculated_net", "calculated_tax",
+        "ordered", "received", "previously_invoiced", "available_to_invoice", "remaining_on_order"
+      ],
+      "properties": {
+        "document_line_id": { "$ref": "common.schema.json#/$defs/id" },
+        "order_line_id": { "oneOf": [{ "$ref": "common.schema.json#/$defs/id" }, { "type": "null" }] },
+        "match_source": { "oneOf": [{ "$ref": "common.schema.json#/$defs/match_source" }, { "type": "null" }] },
+        "calculated_net": { "$ref": "common.schema.json#/$defs/decimal" },
+        "calculated_tax": { "$ref": "common.schema.json#/$defs/decimal" },
+        "ordered": { "$ref": "#/$defs/nullable_decimal" },
+        "received": { "$ref": "#/$defs/nullable_decimal" },
+        "previously_invoiced": { "$ref": "#/$defs/nullable_decimal" },
+        "available_to_invoice": { "$ref": "#/$defs/nullable_decimal" },
+        "remaining_on_order": { "$ref": "#/$defs/nullable_decimal" }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "object_id", "status", "severity", "depends_on"],
+      "properties": {
+        "code": { "$ref": "common.schema.json#/$defs/check_code" },
+        "object_id": { "$ref": "common.schema.json#/$defs/id" },
+        "status": { "$ref": "common.schema.json#/$defs/check_status" },
+        "severity": { "oneOf": [{ "$ref": "common.schema.json#/$defs/severity" }, { "type": "null" }] },
+        "depends_on": { "oneOf": [{ "$ref": "common.schema.json#/$defs/check_code" }, { "type": "null" }] },
+        "actual": { "description": "Free-form; not compared." },
+        "expected": { "description": "Free-form; not compared." },
+        "evidence_refs": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/json_pointer" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "fail" } } },
+          "then": { "properties": { "severity": { "$ref": "common.schema.json#/$defs/severity" } } },
+          "else": { "properties": { "severity": { "type": "null" } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "unknown" } } },
+          "else": { "properties": { "depends_on": { "type": "null" } } }
+        }
+      ]
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_fact", "target_object_ids", "text"],
+      "properties": {
+        "required_fact": { "$ref": "common.schema.json#/$defs/required_fact" },
+        "target_object_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/id" }
+        },
+        "text": { "type": "string", "description": "Free-form; not compared." }
+      }
+    },
+    "nullable_decimal": { "oneOf": [{ "$ref": "common.schema.json#/$defs/decimal" }, { "type": "null" }] }
+  }
+}

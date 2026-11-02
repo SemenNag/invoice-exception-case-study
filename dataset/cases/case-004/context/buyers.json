@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "buyers": [
+    {
+      "buyer_id": "BUYER-001",
+      "legal_name": "Fictional Siteworks d.o.o.",
+      "country": "RS",
+      "registration_id": "RS-SYN-40001",
+      "explicit_aliases": [
+        "Fictional Siteworks"
+      ]
+    }
+  ]
+}

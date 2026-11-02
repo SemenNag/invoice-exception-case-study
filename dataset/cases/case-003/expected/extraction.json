@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0",
+  "document_id": "DOC-003",
+  "type": "invoice",
+  "number": "INV-2026-4103",
+  "issue_date": "2026-10-26",
+  "due_date": "2026-11-25",
+  "currency": "EUR",
+  "purchase_order_reference": "PO-2026-7103",
+  "payment_terms": "Bank transfer within 30 days of invoice date.",
+  "supplier": {
+    "legal_name": "Kamenwerk Tools GmbH",
+    "registration_id": "AT-SYN-30003",
+    "country": "AT"
+  },
+  "buyer": {
+    "legal_name": "Fictional Siteworks d.o.o.",
+    "registration_id": "RS-SYN-40001",
+    "country": "RS"
+  },
+  "bank": {
+    "iban": "AT00SYNTHETIC0000000003",
+    "bic": "SYNBAT00"
+  },
+  "lines": [
+    {
+      "line_id": "L01",
+      "description": "Heavy duty wall anchor M12",
+      "sku": "ANC-M12",
+      "quantity": "70",
+      "unit": "pcs",
+      "unit_net_price": "12.50",
+      "declared_net_amount": "875.00",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "175.00"
+    }
+  ],
+  "missing_fields": [],
+  "evidence": [
+    {
+      "field_path": "/type",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "INVOICE"
+    },
+    {
+      "field_path": "/number",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Number: INV-2026-4103"
+    },
+    {
+      "field_path": "/issue_date",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Issued: 2026-10-26"
+    },
+    {
+      "field_path": "/due_date",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Due: 2026-11-25"
+    },
+    {
+      "field_path": "/currency",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Currency: EUR"
+    },
+    {
+      "field_path": "/supplier/legal_name",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Kamenwerk Tools GmbH"
+    },
+    {
+      "field_path": "/supplier/registration_id",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Registration: AT-SYN-30003"
+    },
+    {
+      "field_path": "/supplier/country",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Country: AT"
+    },
+    {
+      "field_path": "/buyer/legal_name",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Fictional Siteworks d.o.o."
+    },
+    {
+      "field_path": "/buyer/registration_id",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Registration: RS-SYN-40001"
+    },
+    {
+      "field_path": "/buyer/country",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Country: RS"
+    },
+    {
+      "field_path": "/purchase_order_reference",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Purchase order: PO-2026-7103"
+    },
+    {
+      "field_path": "/lines/0/description",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Heavy duty wall anchor M12"
+    },
+    {
+      "field_path": "/lines/0/sku",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "SKU: ANC-M12"
+    },
+    {
+      "field_path": "/lines/0/tax_rate",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/0/quantity",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "70"
+    },
+    {
+      "field_path": "/lines/0/unit",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/0/unit_net_price",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "12.50"
+    },
+    {
+      "field_path": "/lines/0/declared_net_amount",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "875.00"
+    },
+    {
+      "field_path": "/lines/0/declared_tax_amount",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "175.00"
+    },
+    {
+      "field_path": "/declared_subtotal",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "875.00"
+    },
+    {
+      "field_path": "/declared_tax_total",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "175.00"
+    },
+    {
+      "field_path": "/declared_total",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "1,050.00"
+    },
+    {
+      "field_path": "/payment_terms",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "Bank transfer within 30 days of invoice date."
+    },
+    {
+      "field_path": "/bank/iban",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "IBAN: AT00 SYNT HETI C000 0000 003"
+    },
+    {
+      "field_path": "/bank/bic",
+      "document_id": "DOC-003",
+      "page": 1,
+      "excerpt": "BIC: SYNBAT00"
+    }
+  ],
+  "declared_subtotal": "875.00",
+  "declared_tax_total": "175.00",
+  "declared_total": "1050.00"
+}

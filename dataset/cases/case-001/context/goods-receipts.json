@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "availability": "available",
+  "receipts": [
+    {
+      "receipt_id": "GR-001-01",
+      "order_id": "ORD-001",
+      "order_line_id": "OL-001-01",
+      "accepted_quantity": "120",
+      "unit": "pcs",
+      "accepted_at": "2026-10-23",
+      "status": "accepted"
+    },
+    {
+      "receipt_id": "GR-001-02",
+      "order_id": "ORD-001",
+      "order_line_id": "OL-001-02",
+      "accepted_quantity": "80",
+      "unit": "pcs",
+      "accepted_at": "2026-10-23",
+      "status": "accepted"
+    },
+    {
+      "receipt_id": "GR-001-03",
+      "order_id": "ORD-001",
+      "order_line_id": "OL-001-03",
+      "accepted_quantity": "6",
+      "unit": "pcs",
+      "accepted_at": "2026-10-23",
+      "status": "accepted"
+    },
+    {
+      "receipt_id": "GR-001-04",
+      "order_id": "ORD-001",
+      "order_line_id": "OL-001-04",
+      "accepted_quantity": "12",
+      "unit": "pcs",
+      "accepted_at": "2026-10-23",
+      "status": "accepted"
+    }
+  ]
+}

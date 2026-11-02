@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-006",
+      "reference": "PO-2026-7106",
+      "status": "open",
+      "supplier_id": "SUP-003",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-006-01",
+          "sku": "SCREW-112",
+          "description": "Concrete screw 7.5 x 112 mm box",
+          "explicit_aliases": [],
+          "quantity": "30",
+          "unit": "pcs",
+          "unit_net_price": "18.50",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-006-02",
+          "sku": "LEVEL-100",
+          "description": "Spirit level 100 cm",
+          "explicit_aliases": [],
+          "quantity": "4",
+          "unit": "pcs",
+          "unit_net_price": "44.90",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

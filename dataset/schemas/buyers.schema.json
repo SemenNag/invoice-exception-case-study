@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/buyers.schema.json",
+  "title": "Buyer legal entities (context/buyers.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "buyers"],
+  "properties": {
+    "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+    "buyers": { "type": "array", "items": { "$ref": "#/$defs/buyer" } }
+  },
+  "$defs": {
+    "buyer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["buyer_id", "legal_name", "country", "registration_id", "explicit_aliases"],
+      "properties": {
+        "buyer_id": { "$ref": "common.schema.json#/$defs/id" },
+        "legal_name": { "$ref": "common.schema.json#/$defs/text" },
+        "country": { "$ref": "common.schema.json#/$defs/country" },
+        "registration_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "explicit_aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/text" }
+        }
+      }
+    }
+  }
+}

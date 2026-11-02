@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.0",
+  "document_id": "DOC-001",
+  "type": "invoice",
+  "number": "INV-2026-4101",
+  "issue_date": "2026-10-26",
+  "due_date": "2026-11-25",
+  "currency": "EUR",
+  "purchase_order_reference": "PO-2026-7101",
+  "payment_terms": "Bank transfer within 30 days of invoice date.",
+  "supplier": {
+    "legal_name": "Nordbau Supply GmbH",
+    "registration_id": "DE-SYN-10001",
+    "country": "DE"
+  },
+  "buyer": {
+    "legal_name": "Fictional Siteworks d.o.o.",
+    "registration_id": "RS-SYN-40001",
+    "country": "RS"
+  },
+  "bank": {
+    "iban": "DE00SYNTHETIC0000000001",
+    "bic": "SYNBDE00"
+  },
+  "lines": [
+    {
+      "line_id": "L01",
+      "description": "Reinforcing bar B500B 12 mm x 6 m",
+      "sku": "RB-12-6",
+      "quantity": "120",
+      "unit": "pcs",
+      "unit_net_price": "8.75",
+      "declared_net_amount": "1050.00",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "210.00"
+    },
+    {
+      "line_id": "L02",
+      "description": "Cement CEM II 25 kg bag",
+      "sku": "CEM-25",
+      "quantity": "80",
+      "unit": "pcs",
+      "unit_net_price": "6.40",
+      "declared_net_amount": "512.00",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "102.40"
+    },
+    {
+      "line_id": "L03",
+      "description": "Diamond cutting disc 230 mm",
+      "sku": "DISC-230",
+      "quantity": "6",
+      "unit": "pcs",
+      "unit_net_price": "32.50",
+      "declared_net_amount": "195.00",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "39.00"
+    },
+    {
+      "line_id": "L04",
+      "description": "Masonry drill bit SDS-plus 10 mm",
+      "sku": "SDS-10",
+      "quantity": "12",
+      "unit": "pcs",
+      "unit_net_price": "7.35",
+      "declared_net_amount": "88.20",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "17.64"
+    }
+  ],
+  "missing_fields": [],
+  "evidence": [
+    {
+      "field_path": "/type",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "INVOICE"
+    },
+    {
+      "field_path": "/number",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "INV-2026-4101"
+    },
+    {
+      "field_path": "/issue_date",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Issue date: 2026-10-26"
+    },
+    {
+      "field_path": "/due_date",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Due date: 2026-11-25"
+    },
+    {
+      "field_path": "/currency",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Currency: EUR"
+    },
+    {
+      "field_path": "/purchase_order_reference",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "PO reference: PO-2026-7101"
+    },
+    {
+      "field_path": "/supplier/legal_name",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Nordbau Supply GmbH"
+    },
+    {
+      "field_path": "/supplier/registration_id",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Registration: DE-SYN-10001"
+    },
+    {
+      "field_path": "/supplier/country",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Country: DE"
+    },
+    {
+      "field_path": "/buyer/legal_name",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Fictional Siteworks d.o.o."
+    },
+    {
+      "field_path": "/buyer/registration_id",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Registration: RS-SYN-40001"
+    },
+    {
+      "field_path": "/buyer/country",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Country: RS"
+    },
+    {
+      "field_path": "/lines/0/description",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Reinforcing bar B500B 12 mm x 6 m"
+    },
+    {
+      "field_path": "/lines/0/sku",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "SKU: RB-12-6"
+    },
+    {
+      "field_path": "/lines/0/tax_rate",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/0/quantity",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "120"
+    },
+    {
+      "field_path": "/lines/0/unit",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/0/unit_net_price",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "8.75"
+    },
+    {
+      "field_path": "/lines/0/declared_net_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "1,050.00"
+    },
+    {
+      "field_path": "/lines/0/declared_tax_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "210.00"
+    },
+    {
+      "field_path": "/lines/1/description",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Cement CEM II 25 kg bag"
+    },
+    {
+      "field_path": "/lines/1/sku",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "SKU: CEM-25"
+    },
+    {
+      "field_path": "/lines/1/tax_rate",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/1/quantity",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "80"
+    },
+    {
+      "field_path": "/lines/1/unit",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/1/unit_net_price",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "6.40"
+    },
+    {
+      "field_path": "/lines/1/declared_net_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "512.00"
+    },
+    {
+      "field_path": "/lines/1/declared_tax_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "102.40"
+    },
+    {
+      "field_path": "/lines/2/description",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Diamond cutting disc 230 mm"
+    },
+    {
+      "field_path": "/lines/2/sku",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "SKU: DISC-230"
+    },
+    {
+      "field_path": "/lines/2/tax_rate",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/2/quantity",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "6"
+    },
+    {
+      "field_path": "/lines/2/unit",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/2/unit_net_price",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "32.50"
+    },
+    {
+      "field_path": "/lines/2/declared_net_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "195.00"
+    },
+    {
+      "field_path": "/lines/2/declared_tax_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "39.00"
+    },
+    {
+      "field_path": "/lines/3/description",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Masonry drill bit SDS-plus 10 mm"
+    },
+    {
+      "field_path": "/lines/3/sku",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "SKU: SDS-10"
+    },
+    {
+      "field_path": "/lines/3/tax_rate",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/3/quantity",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "12"
+    },
+    {
+      "field_path": "/lines/3/unit",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/3/unit_net_price",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "7.35"
+    },
+    {
+      "field_path": "/lines/3/declared_net_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "88.20"
+    },
+    {
+      "field_path": "/lines/3/declared_tax_amount",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "17.64"
+    },
+    {
+      "field_path": "/declared_subtotal",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "1,845.20"
+    },
+    {
+      "field_path": "/declared_tax_total",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "369.04"
+    },
+    {
+      "field_path": "/declared_total",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "2,214.24"
+    },
+    {
+      "field_path": "/payment_terms",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "Bank transfer within 30 days of invoice date."
+    },
+    {
+      "field_path": "/bank/iban",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "IBAN: DE00 SYNT HETI C000 0000 001"
+    },
+    {
+      "field_path": "/bank/bic",
+      "document_id": "DOC-001",
+      "page": 1,
+      "excerpt": "BIC: SYNBDE00"
+    }
+  ],
+  "declared_subtotal": "1845.20",
+  "declared_tax_total": "369.04",
+  "declared_total": "2214.24"
+}

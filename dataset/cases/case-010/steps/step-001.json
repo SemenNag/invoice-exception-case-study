@@ -1,0 +1,391 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-010",
+  "step": 1,
+  "as_of": "2026-11-02",
+  "policy_ref": "core-v1",
+  "context": {
+    "context_version": "CTX-010-v1",
+    "purchase_orders": {
+      "schema_version": "1.0",
+      "orders": [
+        {
+          "order_id": "ORD-010",
+          "reference": "PO-2026-7110",
+          "status": "open",
+          "supplier_id": "SUP-001",
+          "buyer_id": "BUYER-001",
+          "currency": "EUR",
+          "lines": [
+            {
+              "line_id": "OL-010-01",
+              "sku": null,
+              "description": "Wall plug galv. 10 mm",
+              "explicit_aliases": [],
+              "quantity": "100",
+              "unit": "pcs",
+              "unit_net_price": "0.35",
+              "tax_rate": "0.20"
+            },
+            {
+              "line_id": "OL-010-02",
+              "sku": null,
+              "description": "Concrete repair mortar 25 kg",
+              "explicit_aliases": [],
+              "quantity": "20",
+              "unit": "pcs",
+              "unit_net_price": "18.75",
+              "tax_rate": "0.20"
+            }
+          ]
+        },
+        {
+          "order_id": "ORD-010-B",
+          "reference": "PO-2026-7999",
+          "status": "open",
+          "supplier_id": "SUP-001",
+          "buyer_id": "BUYER-001",
+          "currency": "EUR",
+          "lines": [
+            {
+              "line_id": "OL-010-B-01",
+              "sku": null,
+              "description": "Wall plug galv. 10 mm",
+              "explicit_aliases": [],
+              "quantity": "100",
+              "unit": "pcs",
+              "unit_net_price": "0.35",
+              "tax_rate": "0.20"
+            },
+            {
+              "line_id": "OL-010-B-02",
+              "sku": null,
+              "description": "Concrete repair mortar 25 kg",
+              "explicit_aliases": [],
+              "quantity": "20",
+              "unit": "pcs",
+              "unit_net_price": "18.75",
+              "tax_rate": "0.20"
+            }
+          ]
+        }
+      ]
+    },
+    "goods_receipts": {
+      "schema_version": "1.0",
+      "availability": "available",
+      "receipts": [
+        {
+          "receipt_id": "GR-010-01",
+          "order_id": "ORD-010",
+          "order_line_id": "OL-010-01",
+          "accepted_quantity": "100",
+          "unit": "pcs",
+          "accepted_at": "2026-10-23",
+          "status": "accepted"
+        },
+        {
+          "receipt_id": "GR-010-02",
+          "order_id": "ORD-010",
+          "order_line_id": "OL-010-02",
+          "accepted_quantity": "20",
+          "unit": "pcs",
+          "accepted_at": "2026-10-23",
+          "status": "accepted"
+        }
+      ]
+    },
+    "suppliers": {
+      "schema_version": "1.0",
+      "suppliers": [
+        {
+          "supplier_id": "SUP-001",
+          "legal_name": "Nordbau Supply GmbH",
+          "country": "DE",
+          "registration_id": "DE-SYN-10001",
+          "approved_bank_accounts": [
+            {
+              "iban": "DE00SYNTHETIC0000000001",
+              "bic": "SYNBDE00"
+            }
+          ]
+        }
+      ]
+    },
+    "buyers": {
+      "schema_version": "1.0",
+      "buyers": [
+        {
+          "buyer_id": "BUYER-001",
+          "legal_name": "Fictional Siteworks d.o.o.",
+          "country": "RS",
+          "registration_id": "RS-SYN-40001",
+          "explicit_aliases": [
+            "Fictional Siteworks"
+          ]
+        }
+      ]
+    },
+    "invoice_history": {
+      "schema_version": "1.0",
+      "documents": []
+    }
+  },
+  "document": {
+    "content_sha256": "3d88a4e1637ae4c0b2d7d0625f2c4a18dec5501f20a61b5d54811467e7763ed2",
+    "facts": {
+      "schema_version": "1.0",
+      "document_id": "DOC-010",
+      "type": "invoice",
+      "number": "INV-2026-4110",
+      "issue_date": "2026-10-26",
+      "due_date": "2026-11-25",
+      "currency": "EUR",
+      "purchase_order_reference": null,
+      "payment_terms": "Bank transfer within 30 days of invoice date.",
+      "supplier": {
+        "legal_name": "Nordbau Supply GmbH",
+        "registration_id": "DE-SYN-10001",
+        "country": "DE"
+      },
+      "buyer": {
+        "legal_name": "Fictional Siteworks d.o.o.",
+        "registration_id": "RS-SYN-40001",
+        "country": "RS"
+      },
+      "bank": {
+        "iban": "DE00SYNTHETIC0000000001",
+        "bic": "SYNBDE00"
+      },
+      "lines": [
+        {
+          "line_id": "L01",
+          "description": "Galvanised wall plug 10mm",
+          "sku": null,
+          "quantity": "100",
+          "unit": "pcs",
+          "unit_net_price": "0.35",
+          "declared_net_amount": "35.00",
+          "tax_rate": "0.20",
+          "declared_tax_amount": "7.00"
+        },
+        {
+          "line_id": "L02",
+          "description": "Concrete repair mortar 25 kg",
+          "sku": null,
+          "quantity": "20",
+          "unit": "pcs",
+          "unit_net_price": "18.75",
+          "declared_net_amount": "375.00",
+          "tax_rate": "0.20",
+          "declared_tax_amount": "75.00"
+        }
+      ],
+      "missing_fields": [
+        {
+          "field_path": "/purchase_order_reference",
+          "reason": "not_present_in_document"
+        },
+        {
+          "field_path": "/lines/0/sku",
+          "reason": "not_present_in_document"
+        },
+        {
+          "field_path": "/lines/1/sku",
+          "reason": "not_present_in_document"
+        }
+      ],
+      "evidence": [
+        {
+          "field_path": "/type",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "INVOICE"
+        },
+        {
+          "field_path": "/number",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Number: INV-2026-4110"
+        },
+        {
+          "field_path": "/issue_date",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Issued: 2026-10-26"
+        },
+        {
+          "field_path": "/due_date",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Due: 2026-11-25"
+        },
+        {
+          "field_path": "/currency",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Currency: EUR"
+        },
+        {
+          "field_path": "/supplier/legal_name",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Nordbau Supply GmbH"
+        },
+        {
+          "field_path": "/supplier/registration_id",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Registration: DE-SYN-10001"
+        },
+        {
+          "field_path": "/supplier/country",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Country: DE"
+        },
+        {
+          "field_path": "/buyer/legal_name",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Fictional Siteworks d.o.o."
+        },
+        {
+          "field_path": "/buyer/registration_id",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Registration: RS-SYN-40001"
+        },
+        {
+          "field_path": "/buyer/country",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Country: RS"
+        },
+        {
+          "field_path": "/lines/0/description",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Galvanised wall plug 10mm"
+        },
+        {
+          "field_path": "/lines/0/tax_rate",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "VAT rate: 20%"
+        },
+        {
+          "field_path": "/lines/0/quantity",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "100"
+        },
+        {
+          "field_path": "/lines/0/unit",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "pcs"
+        },
+        {
+          "field_path": "/lines/0/unit_net_price",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "0,35"
+        },
+        {
+          "field_path": "/lines/0/declared_net_amount",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "35,00"
+        },
+        {
+          "field_path": "/lines/0/declared_tax_amount",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "7,00"
+        },
+        {
+          "field_path": "/lines/1/description",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Concrete repair mortar 25 kg"
+        },
+        {
+          "field_path": "/lines/1/tax_rate",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "VAT rate: 20%"
+        },
+        {
+          "field_path": "/lines/1/quantity",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "20"
+        },
+        {
+          "field_path": "/lines/1/unit",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "pcs"
+        },
+        {
+          "field_path": "/lines/1/unit_net_price",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "18,75"
+        },
+        {
+          "field_path": "/lines/1/declared_net_amount",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "375,00"
+        },
+        {
+          "field_path": "/lines/1/declared_tax_amount",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "75,00"
+        },
+        {
+          "field_path": "/declared_subtotal",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "410,00"
+        },
+        {
+          "field_path": "/declared_tax_total",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "82,00"
+        },
+        {
+          "field_path": "/declared_total",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "492,00"
+        },
+        {
+          "field_path": "/payment_terms",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "Bank transfer within 30 days of invoice date."
+        },
+        {
+          "field_path": "/bank/iban",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "IBAN: DE00 SYNT HETI C000 0000 001"
+        },
+        {
+          "field_path": "/bank/bic",
+          "document_id": "DOC-010",
+          "page": 1,
+          "excerpt": "BIC: SYNBDE00"
+        }
+      ],
+      "declared_subtotal": "410.00",
+      "declared_tax_total": "82.00",
+      "declared_total": "492.00"
+    }
+  }
+}

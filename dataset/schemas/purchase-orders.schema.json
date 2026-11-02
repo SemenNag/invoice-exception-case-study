@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/purchase-orders.schema.json",
+  "title": "Purchase orders (context/purchase-orders.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "orders"],
+  "properties": {
+    "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+    "orders": { "type": "array", "items": { "$ref": "#/$defs/order" } }
+  },
+  "$defs": {
+    "order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order_id", "reference", "status", "supplier_id", "buyer_id", "currency", "lines"],
+      "properties": {
+        "order_id": { "$ref": "common.schema.json#/$defs/id" },
+        "reference": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "status": { "enum": ["open", "closed"] },
+        "supplier_id": { "$ref": "common.schema.json#/$defs/id" },
+        "buyer_id": { "$ref": "common.schema.json#/$defs/id" },
+        "currency": { "$ref": "common.schema.json#/$defs/currency" },
+        "lines": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/order_line" } }
+      }
+    },
+    "order_line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line_id", "sku", "description", "explicit_aliases", "quantity", "unit", "unit_net_price", "tax_rate"],
+      "properties": {
+        "line_id": { "$ref": "common.schema.json#/$defs/id" },
+        "sku": { "type": ["string", "null"], "minLength": 1, "maxLength": 64 },
+        "description": { "$ref": "common.schema.json#/$defs/text" },
+        "explicit_aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/text" }
+        },
+        "quantity": { "$ref": "common.schema.json#/$defs/quantity" },
+        "unit": { "$ref": "common.schema.json#/$defs/unit" },
+        "unit_net_price": { "$ref": "common.schema.json#/$defs/unit_price" },
+        "tax_rate": { "$ref": "common.schema.json#/$defs/tax_rate" }
+      }
+    }
+  }
+}

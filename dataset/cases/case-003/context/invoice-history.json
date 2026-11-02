@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "HIST-003",
+      "supplier_id": "SUP-003",
+      "buyer_id": "BUYER-001",
+      "document_type": "invoice",
+      "document_number": "INV-2026-3986",
+      "currency": "EUR",
+      "status": "counted",
+      "matched_order_id": "ORD-003",
+      "content_sha256": "1b290bc80d34033ad596f61aa7831b9b3ef559f37b5f70a003ddde53d61140d6",
+      "lines": [
+        {
+          "document_line_id": "L01",
+          "order_line_id": "OL-003-01",
+          "quantity": "40"
+        }
+      ],
+      "normalized_facts": {
+        "issue_date": "2026-10-20",
+        "due_date": "2026-11-19",
+        "currency": "EUR",
+        "purchase_order_reference": "PO-2026-7103",
+        "iban": "AT00SYNTHETIC0000000003",
+        "declared_subtotal": "500.00",
+        "declared_tax_total": "100.00",
+        "declared_total": "600.00",
+        "lines": [
+          {
+            "sku": "ANC-M12",
+            "quantity": "40",
+            "unit": "pcs",
+            "unit_net_price": "12.50",
+            "tax_rate": "0.20",
+            "declared_net_amount": "500.00",
+            "declared_tax_amount": "100.00"
+          }
+        ]
+      }
+    }
+  ]
+}

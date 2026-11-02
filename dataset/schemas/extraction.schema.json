@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/extraction.schema.json",
+  "title": "Extracted invoice facts (expected/extraction.json, step input document.facts)",
+  "description": "Declared values exactly as printed, even if arithmetically wrong. A value absent from the PDF is null and listed in missing_fields; it is never filled from the directories.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "document_id", "type", "number", "issue_date", "due_date", "currency",
+    "purchase_order_reference", "payment_terms", "supplier", "buyer", "bank", "lines",
+    "declared_subtotal", "declared_tax_total", "declared_total", "missing_fields", "evidence"
+  ],
+  "properties": {
+    "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+    "document_id": { "$ref": "common.schema.json#/$defs/id" },
+    "type": { "const": "invoice" },
+    "number": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "issue_date": { "$ref": "common.schema.json#/$defs/date" },
+    "due_date": { "oneOf": [{ "$ref": "common.schema.json#/$defs/date" }, { "type": "null" }] },
+    "currency": { "oneOf": [{ "$ref": "common.schema.json#/$defs/currency" }, { "type": "null" }] },
+    "purchase_order_reference": { "type": ["string", "null"], "minLength": 1, "maxLength": 64 },
+    "payment_terms": { "oneOf": [{ "$ref": "common.schema.json#/$defs/text" }, { "type": "null" }] },
+    "supplier": { "$ref": "#/$defs/party" },
+    "buyer": { "$ref": "#/$defs/party" },
+    "bank": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["iban", "bic"],
+      "properties": {
+        "iban": { "type": ["string", "null"], "minLength": 1, "maxLength": 64 },
+        "bic": { "type": ["string", "null"], "minLength": 1, "maxLength": 16 }
+      }
+    },
+    "lines": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/line" } },
+    "declared_subtotal": { "$ref": "common.schema.json#/$defs/money" },
+    "declared_tax_total": { "$ref": "common.schema.json#/$defs/money" },
+    "declared_total": { "$ref": "common.schema.json#/$defs/money" },
+    "missing_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_path", "reason"],
+        "properties": {
+          "field_path": { "$ref": "common.schema.json#/$defs/json_pointer" },
+          "reason": { "enum": ["not_present_in_document", "illegible"] }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/evidence" }
+    }
+  },
+  "$defs": {
+    "party": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["legal_name", "registration_id", "country"],
+      "properties": {
+        "legal_name": { "oneOf": [{ "$ref": "common.schema.json#/$defs/text" }, { "type": "null" }] },
+        "registration_id": { "type": ["string", "null"], "minLength": 1, "maxLength": 64 },
+        "country": { "oneOf": [{ "$ref": "common.schema.json#/$defs/country" }, { "type": "null" }] }
+      }
+    },
+    "line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "line_id", "description", "sku", "quantity", "unit", "unit_net_price",
+        "declared_net_amount", "tax_rate", "declared_tax_amount"
+      ],
+      "properties": {
+        "line_id": { "$ref": "common.schema.json#/$defs/id" },
+        "description": { "$ref": "common.schema.json#/$defs/text" },
+        "sku": { "type": ["string", "null"], "minLength": 1, "maxLength": 64 },
+        "quantity": { "$ref": "common.schema.json#/$defs/quantity" },
+        "unit": { "$ref": "common.schema.json#/$defs/unit" },
+        "unit_net_price": { "$ref": "common.schema.json#/$defs/unit_price" },
+        "declared_net_amount": { "$ref": "common.schema.json#/$defs/money" },
+        "tax_rate": { "$ref": "common.schema.json#/$defs/tax_rate" },
+        "declared_tax_amount": { "oneOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field_path", "document_id", "page", "excerpt"],
+      "properties": {
+        "field_path": { "$ref": "common.schema.json#/$defs/json_pointer" },
+        "document_id": { "$ref": "common.schema.json#/$defs/id" },
+        "page": { "type": "integer", "minimum": 1 },
+        "excerpt": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    }
+  }
+}

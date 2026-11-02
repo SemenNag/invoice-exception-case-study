@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-001",
+      "reference": "PO-2026-7101",
+      "status": "open",
+      "supplier_id": "SUP-001",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-001-01",
+          "sku": "RB-12-6",
+          "description": "Reinforcing bar B500B 12 mm x 6 m",
+          "explicit_aliases": [],
+          "quantity": "120",
+          "unit": "pcs",
+          "unit_net_price": "8.75",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-001-02",
+          "sku": "CEM-25",
+          "description": "Cement CEM II 25 kg bag",
+          "explicit_aliases": [],
+          "quantity": "80",
+          "unit": "pcs",
+          "unit_net_price": "6.40",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-001-03",
+          "sku": "DISC-230",
+          "description": "Diamond cutting disc 230 mm",
+          "explicit_aliases": [],
+          "quantity": "6",
+          "unit": "pcs",
+          "unit_net_price": "32.50",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-001-04",
+          "sku": "SDS-10",
+          "description": "Masonry drill bit SDS-plus 10 mm",
+          "explicit_aliases": [],
+          "quantity": "12",
+          "unit": "pcs",
+          "unit_net_price": "7.35",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

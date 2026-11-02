@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "suppliers": [
+    {
+      "supplier_id": "SUP-002",
+      "legal_name": "Stonebridge Materials Ltd",
+      "country": "GB",
+      "registration_id": "GB-SYN-20002",
+      "approved_bank_accounts": [
+        {
+          "iban": "GB00SYNTHETIC0000000002",
+          "bic": "SYNTGB00"
+        }
+      ]
+    }
+  ]
+}

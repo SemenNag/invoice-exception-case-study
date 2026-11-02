@@ -1,0 +1,289 @@
+{
+  "policy_version": "core-v1",
+  "status": "approved",
+  "description": "Deterministic invoice reconciliation policy for the Invoice Exception case study. Synthetic rules, not a real company's financial policy. Human-readable source: docs/BUSINESS_RULES.md.",
+  "scope": {
+    "document_types": ["invoice"],
+    "currencies": ["EUR"],
+    "orders_per_document": 1,
+    "line_matching": "one_to_one",
+    "excluded": ["proforma", "prepayment", "delivery", "discounts", "negative_lines", "currency_conversion", "unit_conversion", "returns", "credit_notes"]
+  },
+  "numbers": {
+    "arithmetic": "decimal",
+    "rounding": "ROUND_HALF_UP",
+    "money_scale": 2,
+    "unit_price_scale": 2,
+    "quantity_max_scale": 3,
+    "tax_rate_format": "fraction"
+  },
+  "normalization": {
+    "identifier": ["trim", "uppercase"],
+    "identifier_note": "Applies to registration_id, document number, purchase order reference and SKU. Separators and leading zeros are kept.",
+    "name": ["trim", "collapse_whitespace", "casefold"],
+    "name_note": "Applies to legal names, aliases and line descriptions.",
+    "iban": ["remove_whitespace", "uppercase"]
+  },
+  "decision": {
+    "priority": ["blocked", "needs_information", "needs_review", "clear"],
+    "rules": [
+      "any check with status=fail and severity=blocked -> blocked",
+      "else any check with status=unknown -> needs_information",
+      "else any check with status=fail and severity=needs_review -> needs_review",
+      "else clear"
+    ],
+    "not_applicable": "ignored by the decision",
+    "duplicate": "no assessment and no decision; result references the original"
+  },
+  "check_statuses": ["pass", "fail", "unknown", "not_applicable"],
+  "unknown_semantics": {
+    "root": "missing input fact; depends_on=null; produces exactly one question with the check's required_fact and target_object_ids=[object_id]",
+    "dependent": "cannot be evaluated because another check is unresolved; depends_on=<that check code>; produces no question"
+  },
+  "match_sources": ["deterministic", "agent_proposal", "human_confirmation"],
+  "evaluation_order": [
+    "DOCUMENT_CONFLICT",
+    "SUPPLIER_IDENTITY",
+    "BUYER_IDENTITY",
+    "ORDER_MATCH",
+    "CURRENCY_MATCH",
+    "LINE_MATCH",
+    "QTY_RECEIVED",
+    "QTY_ORDER_REMAINING",
+    "UNIT_PRICE",
+    "LINE_ARITHMETIC",
+    "TOTALS_ARITHMETIC",
+    "BANK_ACCOUNT"
+  ],
+  "resolution": {
+    "supplier": "Document supplier.registration_id (normalized) looked up in suppliers; names and aliases are never used for suppliers.",
+    "buyer": "Document buyer.registration_id (normalized) looked up in buyers; if registration_id is null, the normalized legal_name must equal legal_name or an explicit alias of exactly one buyer.",
+    "order_dependent_checks_with_proposal": "When ORDER_MATCH or LINE_MATCH rests on an unconfirmed agent proposal, dependent checks are evaluated against the proposed order and lines."
+  },
+  "checks": [
+    {
+      "code": "DOCUMENT_CONFLICT",
+      "rule": "R6",
+      "scope": "document",
+      "fail_severity": "blocked",
+      "required_fact": null,
+      "outcomes": [
+        { "when": "supplier not resolved", "status": "unknown", "depends_on": "SUPPLIER_IDENTITY", "import_disposition": "new" },
+        { "when": "buyer not resolved", "status": "unknown", "depends_on": "BUYER_IDENTITY", "import_disposition": "new" },
+        { "when": "business key not found", "status": "pass", "import_disposition": "new" },
+        { "when": "business key found and normalized facts equal", "status": null, "import_disposition": "duplicate", "note": "no checks, no assessment" },
+        { "when": "business key found and normalized facts differ", "status": "fail", "import_disposition": "conflict" }
+      ]
+    },
+    {
+      "code": "SUPPLIER_IDENTITY",
+      "rule": "R1",
+      "scope": "document",
+      "fail_severity": "blocked",
+      "required_fact": "supplier.registration_id",
+      "outcomes": [
+        { "when": "document supplier.registration_id is null", "status": "unknown", "depends_on": null },
+        { "when": "registration_id not found in suppliers", "status": "fail" },
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "resolved supplier_id != order.supplier_id", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    },
+    {
+      "code": "BUYER_IDENTITY",
+      "rule": "R1",
+      "scope": "document",
+      "fail_severity": "blocked",
+      "required_fact": "buyer.registration_id",
+      "outcomes": [
+        { "when": "registration_id is null and name resolution fails", "status": "unknown", "depends_on": null },
+        { "when": "registration_id present but not found in buyers", "status": "fail" },
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "resolved buyer_id != order.buyer_id", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    },
+    {
+      "code": "ORDER_MATCH",
+      "rule": "R2",
+      "scope": "document",
+      "fail_severity": "needs_review",
+      "required_fact": "order_reference",
+      "outcomes": [
+        { "when": "purchase_order_reference present and exactly matches an order reference among all orders", "status": "pass", "match_source": "deterministic" },
+        { "when": "no reference; supplier resolved; exactly one open order of that supplier (and buyer, if resolved) where every document line matches deterministically", "status": "pass", "match_source": "deterministic" },
+        { "when": "human-confirmed proposal exists", "status": "pass", "match_source": "human_confirmation" },
+        { "when": "unconfirmed agent proposal exists", "status": "fail", "match_source": "agent_proposal" },
+        { "when": "purchase_order_reference present and not found", "status": "unknown", "depends_on": null },
+        { "when": "no reference; supplier not resolved", "status": "unknown", "depends_on": "SUPPLIER_IDENTITY" },
+        { "when": "no reference; zero or several candidate orders", "status": "unknown", "depends_on": null }
+      ],
+      "notes": [
+        "Outcomes are evaluated top to bottom; the first match wins. A deterministic match always takes precedence over proposals.",
+        "A proposal that names a different order than a deterministic match is rejected with VALIDATION_ERROR at registration."
+      ]
+    },
+    {
+      "code": "CURRENCY_MATCH",
+      "rule": "R1",
+      "scope": "document",
+      "fail_severity": "blocked",
+      "required_fact": "document.currency",
+      "outcomes": [
+        { "when": "document currency is null", "status": "unknown", "depends_on": null },
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "currency != order.currency", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    },
+    {
+      "code": "LINE_MATCH",
+      "rule": "R2",
+      "scope": "line",
+      "fail_severity": "needs_review",
+      "required_fact": "line_match",
+      "deterministic_keys": ["sku", "explicit_alias", "description"],
+      "outcomes": [
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "exactly one order line matches by normalized SKU, explicit alias or description, not taken by another document line", "match_source": "deterministic", "then": "unit_check" },
+        { "when": "human-confirmed proposal covers this line", "match_source": "human_confirmation", "then": "unit_check" },
+        { "when": "unconfirmed agent proposal covers this line", "status": "fail", "match_source": "agent_proposal" },
+        { "when": "otherwise", "status": "unknown", "depends_on": null }
+      ],
+      "unit_check": {
+        "units_equal": { "status": "pass" },
+        "units_differ": { "status": "fail", "note": "QTY_RECEIVED, QTY_ORDER_REMAINING and UNIT_PRICE become not_applicable for this line" }
+      },
+      "notes": [
+        "An agent-proposed line with a unit mismatch is still fail needs_review; dependent checks become not_applicable.",
+        "A proposal that maps a line differently from its deterministic match is rejected with VALIDATION_ERROR."
+      ]
+    },
+    {
+      "code": "QTY_RECEIVED",
+      "rule": "R3",
+      "scope": "line",
+      "fail_severity": "blocked",
+      "required_fact": "goods_receipts",
+      "formula": "line.quantity <= received - previously_invoiced",
+      "outcomes": [
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "LINE_MATCH unknown", "status": "unknown", "depends_on": "LINE_MATCH" },
+        { "when": "units differ", "status": "not_applicable" },
+        { "when": "goods_receipts.availability = unavailable", "status": "unknown", "depends_on": null },
+        { "when": "formula false", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    },
+    {
+      "code": "QTY_ORDER_REMAINING",
+      "rule": "R3",
+      "scope": "line",
+      "fail_severity": "blocked",
+      "required_fact": null,
+      "formula": "line.quantity <= ordered - previously_invoiced",
+      "outcomes": [
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "LINE_MATCH unknown", "status": "unknown", "depends_on": "LINE_MATCH" },
+        { "when": "units differ", "status": "not_applicable" },
+        { "when": "formula false", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    },
+    {
+      "code": "UNIT_PRICE",
+      "rule": "R4",
+      "scope": "line",
+      "fail_severity": "needs_review",
+      "required_fact": null,
+      "tolerance": { "type": "absolute", "value": "0.01", "inclusive": true, "symmetric": true },
+      "formula": "abs(line.unit_net_price - order_line.unit_net_price) <= 0.01",
+      "outcomes": [
+        { "when": "ORDER_MATCH unknown", "status": "unknown", "depends_on": "ORDER_MATCH" },
+        { "when": "LINE_MATCH unknown", "status": "unknown", "depends_on": "LINE_MATCH" },
+        { "when": "units differ", "status": "not_applicable" },
+        { "when": "formula false", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    },
+    {
+      "code": "LINE_ARITHMETIC",
+      "rule": "R4",
+      "scope": "line",
+      "fail_severity": "blocked",
+      "required_fact": null,
+      "formula": [
+        "calculated_net = round(quantity * unit_net_price, 2)",
+        "calculated_tax = round(calculated_net * tax_rate, 2)",
+        "pass iff calculated_net == declared_net_amount and (declared_tax_amount is null or calculated_tax == declared_tax_amount)"
+      ],
+      "notes": ["Uses the document's own price and tax rate; tax rate applicability is not checked."]
+    },
+    {
+      "code": "TOTALS_ARITHMETIC",
+      "rule": "R4",
+      "scope": "document",
+      "fail_severity": "blocked",
+      "required_fact": null,
+      "formula": [
+        "calculated_subtotal = sum(calculated_net)",
+        "calculated_tax_total = sum(calculated_tax)",
+        "calculated_total = calculated_subtotal + calculated_tax_total",
+        "pass iff all three equal declared_subtotal, declared_tax_total, declared_total"
+      ]
+    },
+    {
+      "code": "BANK_ACCOUNT",
+      "rule": "R5",
+      "scope": "document",
+      "fail_severity": "blocked",
+      "required_fact": "bank_account",
+      "outcomes": [
+        { "when": "document IBAN is null", "status": "unknown", "depends_on": null },
+        { "when": "supplier not resolved", "status": "unknown", "depends_on": "SUPPLIER_IDENTITY" },
+        { "when": "normalized IBAN not in approved_bank_accounts of the resolved document supplier", "status": "fail" },
+        { "when": "otherwise", "status": "pass" }
+      ]
+    }
+  ],
+  "check_instances": {
+    "document": ["DOCUMENT_CONFLICT", "SUPPLIER_IDENTITY", "BUYER_IDENTITY", "ORDER_MATCH", "CURRENCY_MATCH", "TOTALS_ARITHMETIC", "BANK_ACCOUNT"],
+    "line": ["LINE_MATCH", "QTY_RECEIVED", "QTY_ORDER_REMAINING", "UNIT_PRICE", "LINE_ARITHMETIC"],
+    "object_id": "document checks use document_id; line checks use document line_id",
+    "count": "every non-duplicate result contains exactly 7 document checks + 5 checks per document line"
+  },
+  "quantities": {
+    "ordered": "order_line.quantity",
+    "received": "sum(accepted_quantity) of receipts with order_line_id = order line and status = accepted",
+    "previously_invoiced": "sum(quantity) of invoice_history lines with status = counted, matched_order_id = order, order_line_id = order line, excluding documents with the current business key",
+    "available_to_invoice": "received - previously_invoiced",
+    "remaining_on_order": "ordered - previously_invoiced",
+    "null_when": "order or line not resolved; received and available_to_invoice are also null when goods_receipts.availability = unavailable"
+  },
+  "duplicates": {
+    "business_key": ["supplier_id", "buyer_id", "normalized_document_number"],
+    "search_in": ["invoice_history", "documents imported earlier in the same case"],
+    "compared_facts": [
+      "issue_date", "due_date", "currency", "purchase_order_reference", "iban",
+      "declared_subtotal", "declared_tax_total", "declared_total",
+      "lines as multiset of (sku, quantity, unit, unit_net_price, tax_rate, declared_net_amount, declared_tax_amount)"
+    ],
+    "ignored": ["descriptions", "payment_terms", "layout", "file_name", "content_sha256"]
+  },
+  "proposals_and_confirmations": {
+    "proposal_actor": "agent",
+    "confirmation_actor": "human",
+    "confirmation_channel": "human interface only; MCP exposes no confirmation operation",
+    "confirmation_target": "an existing proposal_id",
+    "effect": "new input_revision and a new assessment; previous assessments are kept"
+  },
+  "required_facts": {
+    "supplier.registration_id": "Supplier registration ID is missing from the document.",
+    "buyer.registration_id": "Buyer registration ID is missing and the buyer name does not resolve to exactly one buyer.",
+    "document.currency": "Document currency is missing.",
+    "order_reference": "The purchase order cannot be determined: reference missing or unknown, and no unique deterministic candidate.",
+    "line_match": "A document line cannot be matched to exactly one line of the order.",
+    "goods_receipts": "Goods receipt data is unavailable.",
+    "bank_account": "Bank account is missing from the document."
+  }
+}

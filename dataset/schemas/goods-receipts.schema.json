@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/goods-receipts.schema.json",
+  "title": "Goods receipts (context/goods-receipts.json)",
+  "description": "availability=available with empty receipts means confirmed absence of receipts; availability=unavailable means unknown.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "availability", "receipts"],
+  "properties": {
+    "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+    "availability": { "enum": ["available", "unavailable"] },
+    "receipts": { "type": "array", "items": { "$ref": "#/$defs/receipt" } }
+  },
+  "if": { "properties": { "availability": { "const": "unavailable" } } },
+  "then": { "properties": { "receipts": { "maxItems": 0 } } },
+  "$defs": {
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt_id", "order_id", "order_line_id", "accepted_quantity", "unit", "accepted_at", "status"],
+      "properties": {
+        "receipt_id": { "$ref": "common.schema.json#/$defs/id" },
+        "order_id": { "$ref": "common.schema.json#/$defs/id" },
+        "order_line_id": { "$ref": "common.schema.json#/$defs/id" },
+        "accepted_quantity": { "$ref": "common.schema.json#/$defs/quantity" },
+        "unit": { "$ref": "common.schema.json#/$defs/unit" },
+        "accepted_at": { "$ref": "common.schema.json#/$defs/date" },
+        "status": { "const": "accepted" }
+      }
+    }
+  }
+}

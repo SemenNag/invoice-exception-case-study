@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-008",
+  "policy_ref": "core-v1",
+  "as_of": "2026-11-02",
+  "input_documents": [
+    {
+      "document_id": "DOC-008",
+      "path": "documents/document-001.pdf",
+      "content_sha256": "fcafeb27f91e9f9d972a4fe1da54ce4fa937d48ef24a33ab0f7427176bbcb96d"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "input": "steps/step-001.json",
+      "expected": "expected/step-001.json"
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "documents/original-001.pdf",
+      "description": "Counted original invoice for reference only."
+    },
+    {
+      "path": "expected/original-extraction.json",
+      "description": "Extracted facts of the counted original, not runtime input."
+    }
+  ]
+}

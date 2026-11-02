@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "ORIGINAL-008",
+      "supplier_id": "SUP-002",
+      "buyer_id": "BUYER-001",
+      "document_type": "invoice",
+      "document_number": "INV-2026-4108",
+      "currency": "EUR",
+      "status": "counted",
+      "matched_order_id": "ORD-008",
+      "content_sha256": "7219654004b718e0263e62e6a36a76780ec4984fd174b202840d29768222924f",
+      "lines": [
+        {
+          "document_line_id": "L01",
+          "order_line_id": "OL-008-01",
+          "quantity": "35"
+        },
+        {
+          "document_line_id": "L02",
+          "order_line_id": "OL-008-02",
+          "quantity": "20"
+        },
+        {
+          "document_line_id": "L03",
+          "order_line_id": "OL-008-03",
+          "quantity": "10"
+        }
+      ],
+      "normalized_facts": {
+        "issue_date": "2026-10-26",
+        "due_date": "2026-11-25",
+        "currency": "EUR",
+        "purchase_order_reference": "PO-2026-7108",
+        "iban": "GB00SYNTHETIC0000000002",
+        "declared_subtotal": "1614.00",
+        "declared_tax_total": "322.80",
+        "declared_total": "1936.80",
+        "lines": [
+          {
+            "sku": "MW-100",
+            "quantity": "35",
+            "unit": "pcs",
+            "unit_net_price": "31.60",
+            "tax_rate": "0.20",
+            "declared_net_amount": "1106.00",
+            "declared_tax_amount": "221.20"
+          },
+          {
+            "sku": "TAPE-60",
+            "quantity": "20",
+            "unit": "pcs",
+            "unit_net_price": "14.20",
+            "tax_rate": "0.20",
+            "declared_net_amount": "284.00",
+            "declared_tax_amount": "56.80"
+          },
+          {
+            "sku": "FIX-180",
+            "quantity": "10",
+            "unit": "pcs",
+            "unit_net_price": "22.40",
+            "tax_rate": "0.20",
+            "declared_net_amount": "224.00",
+            "declared_tax_amount": "44.80"
+          }
+        ]
+      }
+    }
+  ]
+}

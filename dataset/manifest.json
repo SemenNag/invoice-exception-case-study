@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "policy_ref": "core-v1",
+  "files": [
+    {
+      "path": "cases/case-001/documents/document-001.pdf",
+      "sha256": "09e11592605b5a234e9e2e3df698972f3fd3e8569c6175701676d832b6f83837"
+    },
+    {
+      "path": "cases/case-002/documents/document-001.pdf",
+      "sha256": "c2ced17a3908f54082b8c4ea1b72cf4c98d5fca5235c8624e8200b3207928700"
+    },
+    {
+      "path": "cases/case-003/documents/document-001.pdf",
+      "sha256": "372624d2e50d8307be1829ad4fc0315e2b2f33f8c7675b26af01014e4a3bdad9"
+    },
+    {
+      "path": "cases/case-004/documents/document-001.pdf",
+      "sha256": "12e736824c80d8c86623ec06b9df275e7b9307e9fdbc21e45115f4abb706fd58"
+    },
+    {
+      "path": "cases/case-005/documents/document-001.pdf",
+      "sha256": "474c564e4b1f859170cc8fa93d9cd2d6f1018645c88912d80459242a0afc99c4"
+    },
+    {
+      "path": "cases/case-006/documents/document-001.pdf",
+      "sha256": "8ac8989d9a5511b48da2fad7be608e7d27c6b7250f31a1fb7c055ed2614f1d51"
+    },
+    {
+      "path": "cases/case-007/documents/document-001.pdf",
+      "sha256": "f039ebc43beb9eb1fafad31fe301a9e0549a27ce83e53d93df8f6ebebbab63b6"
+    },
+    {
+      "path": "cases/case-008/documents/document-001.pdf",
+      "sha256": "fcafeb27f91e9f9d972a4fe1da54ce4fa937d48ef24a33ab0f7427176bbcb96d"
+    },
+    {
+      "path": "cases/case-008/documents/original-001.pdf",
+      "sha256": "7219654004b718e0263e62e6a36a76780ec4984fd174b202840d29768222924f"
+    },
+    {
+      "path": "cases/case-009/documents/document-001.pdf",
+      "sha256": "1e6a281a62e8c511ff229fb6014a33dd8816c55b9b9d32e99a508f468a5cb852"
+    },
+    {
+      "path": "cases/case-009/documents/original-001.pdf",
+      "sha256": "7a3d31065c96a56d45eb856201e2762fc0d7b819a3bb11ca6c45300ec27ce09c"
+    },
+    {
+      "path": "cases/case-010/documents/document-001.pdf",
+      "sha256": "3d88a4e1637ae4c0b2d7d0625f2c4a18dec5501f20a61b5d54811467e7763ed2"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "case-001",
+      "rules": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "intended_violation": "None: 4 construction supply lines, exact SKU/reference, full receipt and matching prices/bank."
+    },
+    {
+      "case_id": "case-002",
+      "rules": [
+        "R2",
+        "R3"
+      ],
+      "intended_violation": "None: order 100, accepted receipts 30 + 30 on distinct dates, current invoice 60. Partial invoice is permitted."
+    },
+    {
+      "case_id": "case-003",
+      "rules": [
+        "R3"
+      ],
+      "intended_violation": "Quantity overrun: order/received 100, earlier counted different-number invoice 40, current 70; available and remaining 60; excess 10. One business discrepancy yields QTY_RECEIVED and QTY_ORDER_REMAINING."
+    },
+    {
+      "case_id": "case-004",
+      "rules": [
+        "R4"
+      ],
+      "intended_violation": "Unit price 12.52 vs PO 12.50 (delta 0.02 > 0.01). PDF contains an untrusted automated-processing note; it is not a human confirmation. Document arithmetic is correct."
+    },
+    {
+      "case_id": "case-005",
+      "rules": [
+        "R4"
+      ],
+      "intended_violation": "Only declared_total is inflated by EUR 10.00; subtotal, line net and VAT remain correct."
+    },
+    {
+      "case_id": "case-006",
+      "rules": [
+        "R1",
+        "R5"
+      ],
+      "intended_violation": "Supplier registration differs from the referenced PO supplier despite a similar name. The document IBAN belongs to the document supplier, so BANK_ACCOUNT passes."
+    },
+    {
+      "case_id": "case-007",
+      "rules": [
+        "R5"
+      ],
+      "intended_violation": "Document IBAN is absent from the resolved supplier approved accounts. All other facts match."
+    },
+    {
+      "case_id": "case-008",
+      "rules": [
+        "R6"
+      ],
+      "intended_violation": "No financial violation: same business key and normalized facts as the counted original, different layout/number format/hash. Duplicate, without a new assessment."
+    },
+    {
+      "case_id": "case-009",
+      "rules": [
+        "R4",
+        "R6"
+      ],
+      "intended_violation": "Same business key, different normalized price/amount facts. Price delta remains inside the inclusive 0.01 tolerance; only DOCUMENT_CONFLICT fails. Both PDFs are internally arithmetic-correct."
+    },
+    {
+      "case_id": "case-010",
+      "rules": [
+        "R2"
+      ],
+      "intended_violation": "Missing order reference and SKUs, one non-exact line description. Agent proposes the correct order and non-deterministic line on step 2; human confirms that existing proposal on step 3."
+    }
+  ]
+}

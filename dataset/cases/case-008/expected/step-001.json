@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-008",
+  "step": 1,
+  "policy_version": "core-v1",
+  "context_version": "CTX-008-v1",
+  "input_revision": 1,
+  "document_id": "DOC-008",
+  "import_disposition": "duplicate",
+  "original_document_id": "ORIGINAL-008",
+  "existing_assessment_ref": null,
+  "matched_order_id": null,
+  "order_match_source": null,
+  "lines": [],
+  "totals": null,
+  "checks": [],
+  "decision": null,
+  "questions": []
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "suppliers": [
+    {
+      "supplier_id": "SUP-003",
+      "legal_name": "Kamenwerk Tools GmbH",
+      "country": "AT",
+      "registration_id": "AT-SYN-30003",
+      "approved_bank_accounts": [
+        {
+          "iban": "AT00SYNTHETIC0000000003",
+          "bic": "SYNBAT00"
+        }
+      ]
+    }
+  ]
+}

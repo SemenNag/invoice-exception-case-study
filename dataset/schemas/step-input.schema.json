@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/step-input.schema.json",
+  "title": "Adapter step input (steps/step-NNN.json, adapter stdin)",
+  "description": "The adapter applies context, document, proposals and confirmations in this order, then returns the current result for the case document.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "step", "as_of", "policy_ref"],
+  "anyOf": [
+    { "required": ["context"] },
+    { "required": ["document"] },
+    { "required": ["proposals"] },
+    { "required": ["confirmations"] }
+  ],
+  "properties": {
+    "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+    "case_id": { "$ref": "common.schema.json#/$defs/case_id" },
+    "step": { "type": "integer", "minimum": 1 },
+    "as_of": { "$ref": "common.schema.json#/$defs/date" },
+    "policy_ref": { "$ref": "common.schema.json#/$defs/policy_ref" },
+    "context": { "$ref": "context.schema.json" },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_sha256", "facts"],
+      "properties": {
+        "content_sha256": { "$ref": "common.schema.json#/$defs/sha256" },
+        "facts": { "$ref": "extraction.schema.json" }
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["proposal_id", "actor", "document_id", "order_id", "line_matches"],
+        "properties": {
+          "proposal_id": { "$ref": "common.schema.json#/$defs/id" },
+          "actor": { "const": "agent" },
+          "document_id": { "$ref": "common.schema.json#/$defs/id" },
+          "order_id": { "$ref": "common.schema.json#/$defs/id" },
+          "line_matches": {
+            "type": "array",
+            "items": { "$ref": "common.schema.json#/$defs/line_match" }
+          }
+        }
+      }
+    },
+    "confirmations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["proposal_id", "actor", "confirmed_by"],
+        "properties": {
+          "proposal_id": { "$ref": "common.schema.json#/$defs/id" },
+          "actor": { "const": "human" },
+          "confirmed_by": { "type": "string", "minLength": 1, "maxLength": 128 }
+        }
+      }
+    }
+  }
+}

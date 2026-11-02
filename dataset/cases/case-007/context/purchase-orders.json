@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-007",
+      "reference": "PO-2026-7107",
+      "status": "open",
+      "supplier_id": "SUP-001",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-007-01",
+          "sku": "TIM-C24",
+          "description": "Structural timber C24 50 x 150 mm",
+          "explicit_aliases": [],
+          "quantity": "40",
+          "unit": "pcs",
+          "unit_net_price": "24.75",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-007-02",
+          "sku": "SAW-190",
+          "description": "Circular saw blade 190 mm",
+          "explicit_aliases": [],
+          "quantity": "8",
+          "unit": "pcs",
+          "unit_net_price": "29.95",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

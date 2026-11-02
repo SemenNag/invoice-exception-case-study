@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-010",
+      "reference": "PO-2026-7110",
+      "status": "open",
+      "supplier_id": "SUP-001",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-010-01",
+          "sku": null,
+          "description": "Wall plug galv. 10 mm",
+          "explicit_aliases": [],
+          "quantity": "100",
+          "unit": "pcs",
+          "unit_net_price": "0.35",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-010-02",
+          "sku": null,
+          "description": "Concrete repair mortar 25 kg",
+          "explicit_aliases": [],
+          "quantity": "20",
+          "unit": "pcs",
+          "unit_net_price": "18.75",
+          "tax_rate": "0.20"
+        }
+      ]
+    },
+    {
+      "order_id": "ORD-010-B",
+      "reference": "PO-2026-7999",
+      "status": "open",
+      "supplier_id": "SUP-001",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-010-B-01",
+          "sku": null,
+          "description": "Wall plug galv. 10 mm",
+          "explicit_aliases": [],
+          "quantity": "100",
+          "unit": "pcs",
+          "unit_net_price": "0.35",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-010-B-02",
+          "sku": null,
+          "description": "Concrete repair mortar 25 kg",
+          "explicit_aliases": [],
+          "quantity": "20",
+          "unit": "pcs",
+          "unit_net_price": "18.75",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

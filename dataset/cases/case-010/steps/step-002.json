@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-010",
+  "step": 2,
+  "as_of": "2026-11-02",
+  "policy_ref": "core-v1",
+  "proposals": [
+    {
+      "proposal_id": "PROP-010-01",
+      "actor": "agent",
+      "document_id": "DOC-010",
+      "order_id": "ORD-010",
+      "line_matches": [
+        {
+          "document_line_id": "L01",
+          "order_line_id": "OL-010-01"
+        }
+      ]
+    }
+  ]
+}

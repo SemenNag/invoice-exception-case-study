@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "ORIGINAL-009",
+      "supplier_id": "SUP-003",
+      "buyer_id": "BUYER-001",
+      "document_type": "invoice",
+      "document_number": "INV-2026-4109",
+      "currency": "EUR",
+      "status": "counted",
+      "matched_order_id": "ORD-009",
+      "content_sha256": "7a3d31065c96a56d45eb856201e2762fc0d7b819a3bb11ca6c45300ec27ce09c",
+      "lines": [
+        {
+          "document_line_id": "L01",
+          "order_line_id": "OL-009-01",
+          "quantity": "5"
+        },
+        {
+          "document_line_id": "L02",
+          "order_line_id": "OL-009-02",
+          "quantity": "10"
+        }
+      ],
+      "normalized_facts": {
+        "issue_date": "2026-10-26",
+        "due_date": "2026-11-25",
+        "currency": "EUR",
+        "purchase_order_reference": "PO-2026-7109",
+        "iban": "AT00SYNTHETIC0000000003",
+        "declared_subtotal": "1176.95",
+        "declared_tax_total": "235.39",
+        "declared_total": "1412.34",
+        "lines": [
+          {
+            "sku": "DRILL-800",
+            "quantity": "5",
+            "unit": "pcs",
+            "unit_net_price": "186.39",
+            "tax_rate": "0.20",
+            "declared_net_amount": "931.95",
+            "declared_tax_amount": "186.39"
+          },
+          {
+            "sku": "BIT-SET5",
+            "quantity": "10",
+            "unit": "pcs",
+            "unit_net_price": "24.50",
+            "tax_rate": "0.20",
+            "declared_net_amount": "245.00",
+            "declared_tax_amount": "49.00"
+          }
+        ]
+      }
+    }
+  ]
+}

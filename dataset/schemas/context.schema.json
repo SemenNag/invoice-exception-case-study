@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://invoice-exception-case-study.example/schemas/context.schema.json",
+  "title": "Context snapshot (step input context)",
+  "description": "Full snapshot of all context files, sent on the first step and on every context change. Replaces the previous snapshot entirely.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["context_version", "purchase_orders", "goods_receipts", "suppliers", "buyers", "invoice_history"],
+  "properties": {
+    "context_version": { "$ref": "common.schema.json#/$defs/id" },
+    "purchase_orders": { "$ref": "purchase-orders.schema.json" },
+    "goods_receipts": { "$ref": "goods-receipts.schema.json" },
+    "suppliers": { "$ref": "suppliers.schema.json" },
+    "buyers": { "$ref": "buyers.schema.json" },
+    "invoice_history": { "$ref": "invoice-history.schema.json" }
+  }
+}

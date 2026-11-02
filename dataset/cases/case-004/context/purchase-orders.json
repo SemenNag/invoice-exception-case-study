@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-004",
+      "reference": "PO-2026-7104",
+      "status": "open",
+      "supplier_id": "SUP-001",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-004-01",
+          "sku": "CLAMP-120",
+          "description": "Concrete formwork clamp 120 mm",
+          "explicit_aliases": [],
+          "quantity": "80",
+          "unit": "pcs",
+          "unit_net_price": "12.50",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-004-02",
+          "sku": "GLOVE-L",
+          "description": "Work gloves abrasion resistant size L",
+          "explicit_aliases": [],
+          "quantity": "24",
+          "unit": "pcs",
+          "unit_net_price": "4.80",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-002",
+      "reference": "PO-2026-7102",
+      "status": "open",
+      "supplier_id": "SUP-002",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-002-01",
+          "sku": "BR-90",
+          "description": "Galvanised steel angle bracket 90 mm",
+          "explicit_aliases": [],
+          "quantity": "100",
+          "unit": "pcs",
+          "unit_net_price": "12.50",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

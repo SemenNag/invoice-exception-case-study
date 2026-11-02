@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "orders": [
+    {
+      "order_id": "ORD-005",
+      "reference": "PO-2026-7105",
+      "status": "open",
+      "supplier_id": "SUP-002",
+      "buyer_id": "BUYER-001",
+      "currency": "EUR",
+      "lines": [
+        {
+          "line_id": "OL-005-01",
+          "sku": "PLY-18",
+          "description": "Plywood shuttering panel 18 mm",
+          "explicit_aliases": [],
+          "quantity": "20",
+          "unit": "pcs",
+          "unit_net_price": "38.40",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-005-02",
+          "sku": "ADH-25",
+          "description": "Tile adhesive 25 kg bag",
+          "explicit_aliases": [],
+          "quantity": "40",
+          "unit": "pcs",
+          "unit_net_price": "11.25",
+          "tax_rate": "0.20"
+        },
+        {
+          "line_id": "OL-005-03",
+          "sku": "WIRE-12",
+          "description": "Galvanised tie wire 1.2 mm roll",
+          "explicit_aliases": [],
+          "quantity": "10",
+          "unit": "pcs",
+          "unit_net_price": "16.80",
+          "tax_rate": "0.20"
+        }
+      ]
+    }
+  ]
+}

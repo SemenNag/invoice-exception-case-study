@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-010",
+  "step": 3,
+  "as_of": "2026-11-02",
+  "policy_ref": "core-v1",
+  "confirmations": [
+    {
+      "proposal_id": "PROP-010-01",
+      "actor": "human",
+      "confirmed_by": "fixture-reviewer"
+    }
+  ]
+}

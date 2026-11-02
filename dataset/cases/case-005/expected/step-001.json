@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-005",
+  "step": 1,
+  "policy_version": "core-v1",
+  "context_version": "CTX-005-v1",
+  "input_revision": 1,
+  "document_id": "DOC-005",
+  "import_disposition": "new",
+  "original_document_id": null,
+  "existing_assessment_ref": null,
+  "matched_order_id": "ORD-005",
+  "order_match_source": "deterministic",
+  "lines": [
+    {
+      "document_line_id": "L01",
+      "order_line_id": "OL-005-01",
+      "match_source": "deterministic",
+      "calculated_net": "768.00",
+      "calculated_tax": "153.60",
+      "ordered": "20",
+      "received": "20",
+      "previously_invoiced": "0",
+      "available_to_invoice": "20",
+      "remaining_on_order": "20"
+    },
+    {
+      "document_line_id": "L02",
+      "order_line_id": "OL-005-02",
+      "match_source": "deterministic",
+      "calculated_net": "450.00",
+      "calculated_tax": "90.00",
+      "ordered": "40",
+      "received": "40",
+      "previously_invoiced": "0",
+      "available_to_invoice": "40",
+      "remaining_on_order": "40"
+    },
+    {
+      "document_line_id": "L03",
+      "order_line_id": "OL-005-03",
+      "match_source": "deterministic",
+      "calculated_net": "168.00",
+      "calculated_tax": "33.60",
+      "ordered": "10",
+      "received": "10",
+      "previously_invoiced": "0",
+      "available_to_invoice": "10",
+      "remaining_on_order": "10"
+    }
+  ],
+  "totals": {
+    "calculated_subtotal": "1386.00",
+    "calculated_tax_total": "277.20",
+    "calculated_total": "1663.20"
+  },
+  "checks": [
+    {
+      "code": "DOCUMENT_CONFLICT",
+      "object_id": "DOC-005",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "SUPPLIER_IDENTITY",
+      "object_id": "DOC-005",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "BUYER_IDENTITY",
+      "object_id": "DOC-005",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "ORDER_MATCH",
+      "object_id": "DOC-005",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "CURRENCY_MATCH",
+      "object_id": "DOC-005",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "LINE_MATCH",
+      "object_id": "L01",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "LINE_MATCH",
+      "object_id": "L02",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "LINE_MATCH",
+      "object_id": "L03",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "QTY_RECEIVED",
+      "object_id": "L01",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "QTY_RECEIVED",
+      "object_id": "L02",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "QTY_RECEIVED",
+      "object_id": "L03",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "QTY_ORDER_REMAINING",
+      "object_id": "L01",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "QTY_ORDER_REMAINING",
+      "object_id": "L02",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "QTY_ORDER_REMAINING",
+      "object_id": "L03",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "UNIT_PRICE",
+      "object_id": "L01",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "UNIT_PRICE",
+      "object_id": "L02",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "UNIT_PRICE",
+      "object_id": "L03",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "LINE_ARITHMETIC",
+      "object_id": "L01",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "LINE_ARITHMETIC",
+      "object_id": "L02",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "LINE_ARITHMETIC",
+      "object_id": "L03",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    },
+    {
+      "code": "TOTALS_ARITHMETIC",
+      "object_id": "DOC-005",
+      "status": "fail",
+      "severity": "blocked",
+      "depends_on": null
+    },
+    {
+      "code": "BANK_ACCOUNT",
+      "object_id": "DOC-005",
+      "status": "pass",
+      "severity": null,
+      "depends_on": null
+    }
+  ],
+  "decision": "blocked",
+  "questions": []
+}

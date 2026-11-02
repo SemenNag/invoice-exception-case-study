@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "availability": "available",
+  "receipts": [
+    {
+      "receipt_id": "GR-009-01",
+      "order_id": "ORD-009",
+      "order_line_id": "OL-009-01",
+      "accepted_quantity": "5",
+      "unit": "pcs",
+      "accepted_at": "2026-10-23",
+      "status": "accepted"
+    },
+    {
+      "receipt_id": "GR-009-02",
+      "order_id": "ORD-009",
+      "order_line_id": "OL-009-02",
+      "accepted_quantity": "10",
+      "unit": "pcs",
+      "accepted_at": "2026-10-23",
+      "status": "accepted"
+    }
+  ]
+}

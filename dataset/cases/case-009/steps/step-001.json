@@ -1,0 +1,420 @@
+{
+  "schema_version": "1.0",
+  "case_id": "case-009",
+  "step": 1,
+  "as_of": "2026-11-02",
+  "policy_ref": "core-v1",
+  "context": {
+    "context_version": "CTX-009-v1",
+    "purchase_orders": {
+      "schema_version": "1.0",
+      "orders": [
+        {
+          "order_id": "ORD-009",
+          "reference": "PO-2026-7109",
+          "status": "open",
+          "supplier_id": "SUP-003",
+          "buyer_id": "BUYER-001",
+          "currency": "EUR",
+          "lines": [
+            {
+              "line_id": "OL-009-01",
+              "sku": "DRILL-800",
+              "description": "Hammer drill SDS-plus 800 W",
+              "explicit_aliases": [],
+              "quantity": "5",
+              "unit": "pcs",
+              "unit_net_price": "186.40",
+              "tax_rate": "0.20"
+            },
+            {
+              "line_id": "OL-009-02",
+              "sku": "BIT-SET5",
+              "description": "Masonry drill bit set 5 pcs",
+              "explicit_aliases": [],
+              "quantity": "10",
+              "unit": "pcs",
+              "unit_net_price": "24.50",
+              "tax_rate": "0.20"
+            }
+          ]
+        }
+      ]
+    },
+    "goods_receipts": {
+      "schema_version": "1.0",
+      "availability": "available",
+      "receipts": [
+        {
+          "receipt_id": "GR-009-01",
+          "order_id": "ORD-009",
+          "order_line_id": "OL-009-01",
+          "accepted_quantity": "5",
+          "unit": "pcs",
+          "accepted_at": "2026-10-23",
+          "status": "accepted"
+        },
+        {
+          "receipt_id": "GR-009-02",
+          "order_id": "ORD-009",
+          "order_line_id": "OL-009-02",
+          "accepted_quantity": "10",
+          "unit": "pcs",
+          "accepted_at": "2026-10-23",
+          "status": "accepted"
+        }
+      ]
+    },
+    "suppliers": {
+      "schema_version": "1.0",
+      "suppliers": [
+        {
+          "supplier_id": "SUP-003",
+          "legal_name": "Kamenwerk Tools GmbH",
+          "country": "AT",
+          "registration_id": "AT-SYN-30003",
+          "approved_bank_accounts": [
+            {
+              "iban": "AT00SYNTHETIC0000000003",
+              "bic": "SYNBAT00"
+            }
+          ]
+        }
+      ]
+    },
+    "buyers": {
+      "schema_version": "1.0",
+      "buyers": [
+        {
+          "buyer_id": "BUYER-001",
+          "legal_name": "Fictional Siteworks d.o.o.",
+          "country": "RS",
+          "registration_id": "RS-SYN-40001",
+          "explicit_aliases": [
+            "Fictional Siteworks"
+          ]
+        }
+      ]
+    },
+    "invoice_history": {
+      "schema_version": "1.0",
+      "documents": [
+        {
+          "document_id": "ORIGINAL-009",
+          "supplier_id": "SUP-003",
+          "buyer_id": "BUYER-001",
+          "document_type": "invoice",
+          "document_number": "INV-2026-4109",
+          "currency": "EUR",
+          "status": "counted",
+          "matched_order_id": "ORD-009",
+          "content_sha256": "7a3d31065c96a56d45eb856201e2762fc0d7b819a3bb11ca6c45300ec27ce09c",
+          "lines": [
+            {
+              "document_line_id": "L01",
+              "order_line_id": "OL-009-01",
+              "quantity": "5"
+            },
+            {
+              "document_line_id": "L02",
+              "order_line_id": "OL-009-02",
+              "quantity": "10"
+            }
+          ],
+          "normalized_facts": {
+            "issue_date": "2026-10-26",
+            "due_date": "2026-11-25",
+            "currency": "EUR",
+            "purchase_order_reference": "PO-2026-7109",
+            "iban": "AT00SYNTHETIC0000000003",
+            "declared_subtotal": "1176.95",
+            "declared_tax_total": "235.39",
+            "declared_total": "1412.34",
+            "lines": [
+              {
+                "sku": "DRILL-800",
+                "quantity": "5",
+                "unit": "pcs",
+                "unit_net_price": "186.39",
+                "tax_rate": "0.20",
+                "declared_net_amount": "931.95",
+                "declared_tax_amount": "186.39"
+              },
+              {
+                "sku": "BIT-SET5",
+                "quantity": "10",
+                "unit": "pcs",
+                "unit_net_price": "24.50",
+                "tax_rate": "0.20",
+                "declared_net_amount": "245.00",
+                "declared_tax_amount": "49.00"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "document": {
+    "content_sha256": "1e6a281a62e8c511ff229fb6014a33dd8816c55b9b9d32e99a508f468a5cb852",
+    "facts": {
+      "schema_version": "1.0",
+      "document_id": "DOC-009",
+      "type": "invoice",
+      "number": "INV-2026-4109",
+      "issue_date": "2026-10-26",
+      "due_date": "2026-11-25",
+      "currency": "EUR",
+      "purchase_order_reference": "PO-2026-7109",
+      "payment_terms": "Bank transfer within 30 days of invoice date.",
+      "supplier": {
+        "legal_name": "Kamenwerk Tools GmbH",
+        "registration_id": "AT-SYN-30003",
+        "country": "AT"
+      },
+      "buyer": {
+        "legal_name": "Fictional Siteworks d.o.o.",
+        "registration_id": "RS-SYN-40001",
+        "country": "RS"
+      },
+      "bank": {
+        "iban": "AT00SYNTHETIC0000000003",
+        "bic": "SYNBAT00"
+      },
+      "lines": [
+        {
+          "line_id": "L01",
+          "description": "Hammer drill SDS-plus 800 W",
+          "sku": "DRILL-800",
+          "quantity": "5",
+          "unit": "pcs",
+          "unit_net_price": "186.40",
+          "declared_net_amount": "932.00",
+          "tax_rate": "0.20",
+          "declared_tax_amount": "186.40"
+        },
+        {
+          "line_id": "L02",
+          "description": "Masonry drill bit set 5 pcs",
+          "sku": "BIT-SET5",
+          "quantity": "10",
+          "unit": "pcs",
+          "unit_net_price": "24.50",
+          "declared_net_amount": "245.00",
+          "tax_rate": "0.20",
+          "declared_tax_amount": "49.00"
+        }
+      ],
+      "missing_fields": [],
+      "evidence": [
+        {
+          "field_path": "/type",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "INVOICE"
+        },
+        {
+          "field_path": "/number",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Number: INV-2026-4109"
+        },
+        {
+          "field_path": "/issue_date",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Issued: 2026-10-26"
+        },
+        {
+          "field_path": "/due_date",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Due: 2026-11-25"
+        },
+        {
+          "field_path": "/currency",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Currency: EUR"
+        },
+        {
+          "field_path": "/supplier/legal_name",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Kamenwerk Tools GmbH"
+        },
+        {
+          "field_path": "/supplier/registration_id",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Registration: AT-SYN-30003"
+        },
+        {
+          "field_path": "/supplier/country",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Country: AT"
+        },
+        {
+          "field_path": "/buyer/legal_name",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Fictional Siteworks d.o.o."
+        },
+        {
+          "field_path": "/buyer/registration_id",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Registration: RS-SYN-40001"
+        },
+        {
+          "field_path": "/buyer/country",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Country: RS"
+        },
+        {
+          "field_path": "/purchase_order_reference",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Purchase order: PO-2026-7109"
+        },
+        {
+          "field_path": "/lines/0/description",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Hammer drill SDS-plus 800 W"
+        },
+        {
+          "field_path": "/lines/0/sku",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "SKU: DRILL-800"
+        },
+        {
+          "field_path": "/lines/0/tax_rate",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "VAT rate: 20%"
+        },
+        {
+          "field_path": "/lines/0/quantity",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "5"
+        },
+        {
+          "field_path": "/lines/0/unit",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "pcs"
+        },
+        {
+          "field_path": "/lines/0/unit_net_price",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "186.40"
+        },
+        {
+          "field_path": "/lines/0/declared_net_amount",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "932.00"
+        },
+        {
+          "field_path": "/lines/0/declared_tax_amount",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "186.40"
+        },
+        {
+          "field_path": "/lines/1/description",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Masonry drill bit set 5 pcs"
+        },
+        {
+          "field_path": "/lines/1/sku",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "SKU: BIT-SET5"
+        },
+        {
+          "field_path": "/lines/1/tax_rate",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "VAT rate: 20%"
+        },
+        {
+          "field_path": "/lines/1/quantity",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "10"
+        },
+        {
+          "field_path": "/lines/1/unit",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "pcs"
+        },
+        {
+          "field_path": "/lines/1/unit_net_price",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "24.50"
+        },
+        {
+          "field_path": "/lines/1/declared_net_amount",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "245.00"
+        },
+        {
+          "field_path": "/lines/1/declared_tax_amount",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "49.00"
+        },
+        {
+          "field_path": "/declared_subtotal",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "1,177.00"
+        },
+        {
+          "field_path": "/declared_tax_total",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "235.40"
+        },
+        {
+          "field_path": "/declared_total",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "1,412.40"
+        },
+        {
+          "field_path": "/payment_terms",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "Bank transfer within 30 days of invoice date."
+        },
+        {
+          "field_path": "/bank/iban",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "IBAN: AT00 SYNT HETI C000 0000 003"
+        },
+        {
+          "field_path": "/bank/bic",
+          "document_id": "DOC-009",
+          "page": 1,
+          "excerpt": "BIC: SYNBAT00"
+        }
+      ],
+      "declared_subtotal": "1177.00",
+      "declared_tax_total": "235.40",
+      "declared_total": "1412.40"
+    }
+  }
+}

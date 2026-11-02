@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.0",
+  "document_id": "DOC-006",
+  "type": "invoice",
+  "number": "INV-2026-4106",
+  "issue_date": "2026-10-26",
+  "due_date": "2026-11-25",
+  "currency": "EUR",
+  "purchase_order_reference": "PO-2026-7106",
+  "payment_terms": "Bank transfer within 30 days of invoice date.",
+  "supplier": {
+    "legal_name": "Nordbau Supplies GmbH",
+    "registration_id": "DE-SYN-60002",
+    "country": "DE"
+  },
+  "buyer": {
+    "legal_name": "Fictional Siteworks d.o.o.",
+    "registration_id": "RS-SYN-40001",
+    "country": "RS"
+  },
+  "bank": {
+    "iban": "DE00SYNTHETIC0000000006",
+    "bic": "SYNBDE00"
+  },
+  "lines": [
+    {
+      "line_id": "L01",
+      "description": "Concrete screw 7.5 x 112 mm box",
+      "sku": "SCREW-112",
+      "quantity": "30",
+      "unit": "pcs",
+      "unit_net_price": "18.50",
+      "declared_net_amount": "555.00",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "111.00"
+    },
+    {
+      "line_id": "L02",
+      "description": "Spirit level 100 cm",
+      "sku": "LEVEL-100",
+      "quantity": "4",
+      "unit": "pcs",
+      "unit_net_price": "44.90",
+      "declared_net_amount": "179.60",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "35.92"
+    }
+  ],
+  "missing_fields": [],
+  "evidence": [
+    {
+      "field_path": "/type",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "INVOICE"
+    },
+    {
+      "field_path": "/number",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "INV-2026-4106"
+    },
+    {
+      "field_path": "/issue_date",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Issue date: 2026-10-26"
+    },
+    {
+      "field_path": "/due_date",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Due date: 2026-11-25"
+    },
+    {
+      "field_path": "/currency",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Currency: EUR"
+    },
+    {
+      "field_path": "/purchase_order_reference",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "PO reference: PO-2026-7106"
+    },
+    {
+      "field_path": "/supplier/legal_name",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Nordbau Supplies GmbH"
+    },
+    {
+      "field_path": "/supplier/registration_id",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Registration: DE-SYN-60002"
+    },
+    {
+      "field_path": "/supplier/country",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Country: DE"
+    },
+    {
+      "field_path": "/buyer/legal_name",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Fictional Siteworks d.o.o."
+    },
+    {
+      "field_path": "/buyer/registration_id",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Registration: RS-SYN-40001"
+    },
+    {
+      "field_path": "/buyer/country",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Country: RS"
+    },
+    {
+      "field_path": "/lines/0/description",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Concrete screw 7.5 x 112 mm box"
+    },
+    {
+      "field_path": "/lines/0/sku",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "SKU: SCREW-112"
+    },
+    {
+      "field_path": "/lines/0/tax_rate",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/0/quantity",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "30"
+    },
+    {
+      "field_path": "/lines/0/unit",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/0/unit_net_price",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "18,50"
+    },
+    {
+      "field_path": "/lines/0/declared_net_amount",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "555,00"
+    },
+    {
+      "field_path": "/lines/0/declared_tax_amount",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "111,00"
+    },
+    {
+      "field_path": "/lines/1/description",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Spirit level 100 cm"
+    },
+    {
+      "field_path": "/lines/1/sku",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "SKU: LEVEL-100"
+    },
+    {
+      "field_path": "/lines/1/tax_rate",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/1/quantity",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "4"
+    },
+    {
+      "field_path": "/lines/1/unit",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/1/unit_net_price",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "44,90"
+    },
+    {
+      "field_path": "/lines/1/declared_net_amount",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "179,60"
+    },
+    {
+      "field_path": "/lines/1/declared_tax_amount",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "35,92"
+    },
+    {
+      "field_path": "/declared_subtotal",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "734,60"
+    },
+    {
+      "field_path": "/declared_tax_total",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "146,92"
+    },
+    {
+      "field_path": "/declared_total",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "881,52"
+    },
+    {
+      "field_path": "/payment_terms",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "Bank transfer within 30 days of invoice date."
+    },
+    {
+      "field_path": "/bank/iban",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "IBAN: DE00 SYNT HETI C000 0000 006"
+    },
+    {
+      "field_path": "/bank/bic",
+      "document_id": "DOC-006",
+      "page": 1,
+      "excerpt": "BIC: SYNBDE00"
+    }
+  ],
+  "declared_subtotal": "734.60",
+  "declared_tax_total": "146.92",
+  "declared_total": "881.52"
+}

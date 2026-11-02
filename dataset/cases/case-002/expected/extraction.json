@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0",
+  "document_id": "DOC-002",
+  "type": "invoice",
+  "number": "INV-2026-4102",
+  "issue_date": "2026-10-26",
+  "due_date": "2026-11-25",
+  "currency": "EUR",
+  "purchase_order_reference": "PO-2026-7102",
+  "payment_terms": "Bank transfer within 30 days of invoice date.",
+  "supplier": {
+    "legal_name": "Stonebridge Materials Ltd",
+    "registration_id": "GB-SYN-20002",
+    "country": "GB"
+  },
+  "buyer": {
+    "legal_name": "Fictional Siteworks d.o.o.",
+    "registration_id": "RS-SYN-40001",
+    "country": "RS"
+  },
+  "bank": {
+    "iban": "GB00SYNTHETIC0000000002",
+    "bic": "SYNTGB00"
+  },
+  "lines": [
+    {
+      "line_id": "L01",
+      "description": "Galvanised steel angle bracket 90 mm",
+      "sku": "BR-90",
+      "quantity": "60",
+      "unit": "pcs",
+      "unit_net_price": "12.50",
+      "declared_net_amount": "750.00",
+      "tax_rate": "0.20",
+      "declared_tax_amount": "150.00"
+    }
+  ],
+  "missing_fields": [],
+  "evidence": [
+    {
+      "field_path": "/supplier/legal_name",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Stonebridge Materials Ltd"
+    },
+    {
+      "field_path": "/type",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "INVOICE"
+    },
+    {
+      "field_path": "/number",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "INV-2026-4102"
+    },
+    {
+      "field_path": "/issue_date",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Issued: 2026-10-26"
+    },
+    {
+      "field_path": "/due_date",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Due: 2026-11-25"
+    },
+    {
+      "field_path": "/currency",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Currency: EUR"
+    },
+    {
+      "field_path": "/purchase_order_reference",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Purchase order: PO-2026-7102"
+    },
+    {
+      "field_path": "/supplier/legal_name",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Stonebridge Materials Ltd"
+    },
+    {
+      "field_path": "/supplier/registration_id",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Registration: GB-SYN-20002"
+    },
+    {
+      "field_path": "/supplier/country",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Country: GB"
+    },
+    {
+      "field_path": "/buyer/legal_name",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Fictional Siteworks d.o.o."
+    },
+    {
+      "field_path": "/buyer/registration_id",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Registration: RS-SYN-40001"
+    },
+    {
+      "field_path": "/buyer/country",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Country: RS"
+    },
+    {
+      "field_path": "/lines/0/description",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Galvanised steel angle bracket 90 mm"
+    },
+    {
+      "field_path": "/lines/0/sku",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "SKU: BR-90"
+    },
+    {
+      "field_path": "/lines/0/tax_rate",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "VAT rate: 20%"
+    },
+    {
+      "field_path": "/lines/0/quantity",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "60"
+    },
+    {
+      "field_path": "/lines/0/unit",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "pcs"
+    },
+    {
+      "field_path": "/lines/0/unit_net_price",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "12,50"
+    },
+    {
+      "field_path": "/lines/0/declared_net_amount",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "750,00"
+    },
+    {
+      "field_path": "/lines/0/declared_tax_amount",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "150,00"
+    },
+    {
+      "field_path": "/declared_subtotal",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "750,00"
+    },
+    {
+      "field_path": "/declared_tax_total",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "150,00"
+    },
+    {
+      "field_path": "/declared_total",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "900,00"
+    },
+    {
+      "field_path": "/payment_terms",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "Bank transfer within 30 days of invoice date."
+    },
+    {
+      "field_path": "/bank/iban",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "IBAN: GB00 SYNT HETI C000 0000 002"
+    },
+    {
+      "field_path": "/bank/bic",
+      "document_id": "DOC-002",
+      "page": 1,
+      "excerpt": "BIC: SYNTGB00"
+    }
+  ],
+  "declared_subtotal": "750.00",
+  "declared_tax_total": "150.00",
+  "declared_total": "900.00"
+}
